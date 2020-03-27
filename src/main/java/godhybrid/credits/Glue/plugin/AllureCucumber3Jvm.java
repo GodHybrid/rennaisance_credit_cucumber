@@ -4,28 +4,33 @@ import cucumber.api.*;
 import cucumber.api.Result.Type;
 import cucumber.api.event.*;
 import cucumber.api.formatter.Formatter;
+
 import gherkin.ast.*;
 import gherkin.pickles.PickleCell;
 import gherkin.pickles.PickleRow;
 import gherkin.pickles.PickleTable;
 import gherkin.pickles.PickleTag;
-import godhybrid.credits.Pages.BasePageObj;
+
 import godhybrid.credits.Utilities.Initialization;
+
 import io.qameta.allure.Allure;
 import io.qameta.allure.AllureLifecycle;
 import io.qameta.allure.model.*;
 import io.qameta.allure.util.ResultsUtils;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class AllureCucumber3Jvm implements Formatter {
+public class AllureCucumber3Jvm implements Formatter
+{
     private final AllureLifecycle lifecycle;
     private final Map<String, String> scenarioUuids;
     private final CucumberSourceUtils cucumberSourceUtils;
@@ -293,7 +298,6 @@ public class AllureCucumber3Jvm implements Formatter {
                 result.setStatus(status);
             });
         }
-
     }
 }
 

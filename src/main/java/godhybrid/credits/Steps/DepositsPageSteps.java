@@ -1,7 +1,7 @@
 package godhybrid.credits.Steps;
 
 import godhybrid.credits.Pages.DepositsPage;
-import static godhybrid.credits.Pages.BasePageObj.waitTextToBePresentInElement;
+import static godhybrid.credits.Pages.BasePageObj.waitForTextTrue;
 
 import io.qameta.allure.Step;
 
@@ -11,45 +11,44 @@ public class DepositsPageSteps extends BaseSteps
 {
     public DepositsPage depositsPage = new DepositsPage();
 
-    @Step("Выбран срок вклада {0}")
+    @Step("Выбрана валюта: {0}")
+    public DepositsPageSteps chooseCurrency(String s)
+    {
+        depositsPage.prepare().chooseCurrency(s);
+        return this;
+    }
+
+    @Step("Выбран срок вклада: {0}")
     public DepositsPageSteps selectTerm(String term)
     {
         depositsPage.selectTerm(term);
         return this;
     }
 
-    @Step("Поле {0} заполняется значением {1}")
+    @Step("В поле {0} введено '{1}'")
     public DepositsPageSteps fillField(String field, String value)
     {
-        depositsPage
-                .scrollToElement(DepositsPage.form,65)
-                .fillField(field, value);
+        //depositsPage.scrollToElement(DepositsPage.form,65).fillField(field, value);
+        depositsPage.fillField(field, value);
         return this;
     }
 
-    @Step("Выполнено нажатие на кнопку {0}")
+    @Step("Нажата кнопка {0}")
     public DepositsPageSteps clickElement(String name)
     {
         depositsPage.clickOnButton(name);
         return this;
     }
 
-    @Step("Поле {0} заполнено значением {1}")
+    @Step("В поле {0} записано значение '{1}'")
     public DepositsPageSteps checkCalcValue(String field, String value)
     {
-        if (waitTextToBePresentInElement(DepositsPage.withdraw, value) == false)
+        if (waitForTextTrue(DepositsPage.withdraw, value) == false)
         {
             String actual = DepositsPage.withdraw.getText();
-            assertTrue(String.format("Значение поля [%s] равно [%s]. Ожидалось - [%s]", field, actual, value),
+            assertTrue(String.format("Значение поля [%s] неверно! Текущее: [%s]. Должно быть: [%s].", field, actual, value),
                     actual.equals(value));
         }
-        return this;
-    }
-
-    public DepositsPageSteps chooseCurrency(String s)
-    {
-        depositsPage.prepare();
-        depositsPage.chooseCurrency(s);
         return this;
     }
 }

@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public abstract class BasePageObj
 {
     public static WebDriver driver;
-    Actions bobDoSomething;
+    public Actions bobDoSomething;
     public static WebDriverWait waitForLoad;
 
     BasePageObj()
@@ -26,8 +26,8 @@ public abstract class BasePageObj
 
     public void fillField(WebElement field, String value)
     {
-        waitVisibilityOfElement(field);
-        waitClickableOfElement(field);
+        waitForVisibilityOfElement(field);
+        waitForElementCLickable(field);
         field.click();
         field.clear();
         field.sendKeys(value);
@@ -45,17 +45,17 @@ public abstract class BasePageObj
         return element;
     }
 
-    public static WebElement waitVisibilityOfElement(WebElement element)
+    public WebElement waitForVisibilityOfElement(WebElement element)
     {
         return waitForLoad.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public static WebElement waitClickableOfElement(WebElement element)
+    public WebElement waitForElementCLickable(WebElement element)
     {
         return waitForLoad.until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    public static boolean waitTextToBePresentInElement(WebElement element, String text)
+    public static boolean waitForTextTrue(WebElement element, String text)
     {
        try
        {

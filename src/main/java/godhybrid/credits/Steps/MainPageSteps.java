@@ -6,7 +6,7 @@ import io.qameta.allure.Step;
 
 public class MainPageSteps extends BaseSteps
 {
-    @Step("Выбран пункт {menuItem} - подменю {subMenuItem}")
+    @Step("В меню выбрано '{menuItem}'")
     public MainPageSteps stepSelectMenu(String menuItem)
     {
         new MainPage().selectMainMenuItem(menuItem);

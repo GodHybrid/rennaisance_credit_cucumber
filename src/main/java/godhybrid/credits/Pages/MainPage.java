@@ -22,7 +22,7 @@ public class MainPage extends BasePageObj
         {
             if(element.getText().equalsIgnoreCase(menuItem))
             {
-                BasePageObj.waitVisibilityOfElement(element);
+                waitForVisibilityOfElement(element);
                 found = true;
                 Actions actions = new Actions(Initialization.getDriver());
                 actions.moveToElement(element).click().build().perform();

@@ -6,9 +6,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = { "src/test/java/Features" },
         glue = {"godhybrid.credits.Glue"},
-        plugin = {"io.qameta.allure.cucumber3jvm.AllureCucumber3Jvm"},
-        tags = {"@all", "@success", "@failing", "@scenario_1", "@scenario_2"}
-
+        plugin = {"io.qameta.allure.cucumber3jvm.AllureCucumber3Jvm"}
+        //tags = {"@all", "@success", "@failing", "@scenario_1", "@scenario_2"}
 )
+
 public class CucumberRunner {
 }
